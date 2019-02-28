@@ -1,0 +1,34 @@
+
+  <div class="lockscreen-logo">
+    <%= render('./shared/logo') %>
+  </div>
+  <!-- User name -->
+  <p class="text-center">
+	  Récupération de votre mot de passe!
+  </p>
+  
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+ 
+      <div class="form-group">
+		    <%= f.email_field :email, autofocus: true, class: "form-control",  placeholder: "Email", required: true %>
+      </div>
+        <div class="form-group">
+         <%= f.submit "Envoyer", class: "btn btn-info btn-block" %>
+       
+        </div>
+      
+    <% end %>
+   
+
+  
+  <div class="form-group text-center">
+   <div>Ou se connecter avec un autre compte?</div>
+    <%= render('users/shared/login') %>
+  </div>
+  <div class="form-group text-center">
+    Copyright &copy; <%= Time.now.year %> <b>ProcSys.</b>
+  
+  </div>
+</div>
+<!-- /.center -->
+

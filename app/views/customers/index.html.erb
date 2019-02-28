@@ -1,0 +1,60 @@
+
+
+
+<div class="container-fuild">
+   
+
+
+
+
+<!-- ########## START: MAIN PANEL ########## -->
+    <div class="br-mainpanel">
+     
+       <!-- Content Header (Page header) -->
+    <div class="page-heading">
+            <div class="text-left">
+             
+            </div> 
+
+           
+            
+        <div class="text-right">
+        <%= link_to "AJOUTER",  new_customer_path , class: "btn btn-info" %>
+        </div>
+            
+    </div>
+
+      <div class="br-pagebody">
+        <div class="br-section-wrapper">
+          <h6 class="br-section-label">Liste des clients</h6>
+          <p class="br-section-text"></p>
+
+          <div class="table-wrapper">
+            <table id="datatable1" class="table display responsive nowrap">
+              <thead>
+               
+                <tr>
+                       
+                  <th>Nom</th>
+                  <th>Type</th>
+          
+                  <th >Actions</th>    
+                </tr>
+              </thead>
+              <tbody class="customers-index">
+                <%= render('index') %>
+              </tbody>
+            </table>
+          </div>
+
+         
+
+          
+
+        </div>
+      </div>
+     
+    </div>
+    <!-- ########## END: MAIN PANEL ########## -->
+
+</div>

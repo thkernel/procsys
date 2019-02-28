@@ -1,0 +1,39 @@
+
+
+    <div class="login-logo">
+      <%= render('./shared/logo') %>
+    </div>  
+
+    <p class="tx-center">Connectez-vous pour commencer!</p>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group ">
+  
+        <%= f.email_field :email, autofocus: true, class: "form-control" , placeholder: "Email"%>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe" %>
+      </div>
+      
+        <div class="form-group">
+         <%= render "users/shared/forgotpassword" %>
+         </div>
+     
+      
+      <div class="form-group">
+        <%= f.submit "Se connecter", class: "btn btn-info btn-block" %>
+        
+      </div>
+       
+      
+   <% end %>
+
+    
+ 
+<p class="text-center">
+    Vous n'avez pas de compte ? <br />
+      <%= render "users/shared/register" %>
+   
+</p>
+      
+ 

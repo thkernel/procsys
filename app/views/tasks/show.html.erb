@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @task.service %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @task.contact %>
+</p>
+
+<p>
+  <strong>Motif:</strong>
+  <%= @task.motif %>
+</p>
+
+<p>
+  <strong>Time limit:</strong>
+  <%= @task.time_limit %>
+</p>
+
+<p>
+  <strong>Processing date:</strong>
+  <%= @task.processing_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @task.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @task.user %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

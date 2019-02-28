@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @motif.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @motif.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @motif.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @motif.user %>
+</p>
+
+<%= link_to 'Edit', edit_motif_path(@motif) %> |
+<%= link_to 'Back', motifs_path %>

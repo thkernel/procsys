@@ -1,0 +1,52 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :service_id %>
+    <%= form.text_field :service_id, id: :task_service_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %>
+    <%= form.number_field :contact, id: :task_contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :motif_id %>
+    <%= form.text_field :motif_id, id: :task_motif_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_limit %>
+    <%= form.datetime_select :time_limit, id: :task_time_limit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :processing_date %>
+    <%= form.datetime_select :processing_date, id: :task_processing_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :task_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :task_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

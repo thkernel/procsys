@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ref: MyString
+  arrival_date: 2019-02-27
+  order_type: one
+  customer: one
+  status: false
+  user: one
+
+two:
+  ref: MyString
+  arrival_date: 2019-02-27
+  order_type: two
+  customer: two
+  status: false
+  user: two

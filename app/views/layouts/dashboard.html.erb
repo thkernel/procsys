@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProcSys - Dashboardra</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <!-- Left side column. contains the logo and sidebar -->
+      <section>
+        <%= render('layouts/partials/aside/aside') %>
+      </section>
+    
+      <section>
+        <%= render('layouts/partials/header/header') %>
+            
+      </section>
+
+      <!-- Main content -->
+      <section class="container">
+          <%= yield %>
+      </section>
+
+      <section>
+        <%= render('layouts/partials/footer/footer') %>
+      </section>
+
+    </div>
+
+  </body>
+</html>
