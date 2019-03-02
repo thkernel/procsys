@@ -17,3 +17,14 @@ services = Service.create([{name: "Administration"}, {name: "Comptabilité"}])
 # Add initial users in database.
 User.create(first_name: "Admin", last_name: "Admin", gender: "M", position: "Administrateur", service_id: services.first, role_id: roles.first, email: "salut.amos@gmail.com", password: "AMOSXZIBITDE88",
     password_confirmation: "AMOSXZIBITDE88")
+
+
+# Capistrano-rails-collection cammands
+#cap production rails:rake:log:clear
+#cap production rails:rake:tmp:clear
+#cap production rails:rake:db:drop
+#cap production rails:rake:db:reset
+#cap production rails:rake:db:setup
+#cap production rails:rake:db:seed
+#cap production rails:rake:db:migrate
+#cap production rails:rake:db:rollback
