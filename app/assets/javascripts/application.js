@@ -17,8 +17,9 @@
 // require bootsy
 
 //= require turbolinks
+//= require bracketplusadmin-14/js/popper.js/umd/popper-utils.min
 //= require popper
-//= require bracketplusadmin-14/js/popper.js/popper-utils.min
+
 //= require bootstrap-sprockets
 
 //= require bootstrap
