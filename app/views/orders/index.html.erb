@@ -1,37 +1,62 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
 
-<table>
+
+<div class="container-fluid">
+   
+
+
+
+
+<!-- ########## START: MAIN PANEL ########## -->
+    <div class="br-mainpanel">
+     
+       <!-- Content Header (Page header) -->
+    <div class="page-heading">
+            <div class="text-left">
+             
+            </div> 
+
+           
+            
+        <div class="text-right">
+        <%= link_to "AJOUTER",  new_order_path , class: "btn btn-info", remote: true %>
+        </div>
+            
+    </div>
+
+      <div class="br-pagebody">
+        <div class="br-section-wrapper">
+          <h6 class="br-section-label">Liste des commandes</h6>
+          <p class="br-section-text"></p>
+
+          <div class="table-wrapper">
+            <table id="datatable1" class="table display responsive nowrap">
   <thead>
     <tr>
-      <th>Ref</th>
-      <th>Arrival date</th>
-      <th>Order type</th>
-      <th>Customer</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Réf</th>
+      <th>Date d'arrivée</th>
+      <th>Type</th>
+      <th>Client</th>
+      
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.ref %></td>
-        <td><%= order.arrival_date %></td>
-        <td><%= order.order_type %></td>
-        <td><%= order.customer %></td>
-        <td><%= order.status %></td>
-        <td><%= order.user %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="orders-index">
+     <%= render('index') %>
   </tbody>
 </table>
+</div>
 
-<br>
+         
 
-<%= link_to 'New Order', new_order_path %>
+          
+
+        </div>
+      </div>
+     
+    </div>
+    <!-- ########## END: MAIN PANEL ########## -->
+<div id="order-modal" class="modal fade effect-[value]"></div>
+</div>
+

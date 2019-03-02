@@ -1,4 +1,5 @@
 <%= form_with(model: task, local: true) do |form| %>
+<div class="modal-body pd-25">
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -12,41 +13,34 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :service_id %>
-    <%= form.text_field :service_id, id: :task_service_id %>
+    <%= form.label "Service" %>
+    <%= form.text_field :service_id, id: :task_service_id,   class: "form-control", placeholder: "Service" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :contact %>
-    <%= form.number_field :contact, id: :task_contact %>
+    <%= form.number_field :contact, id: :task_contact,  class: "form-control", placeholder: "Acteur" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :motif_id %>
-    <%= form.text_field :motif_id, id: :task_motif_id %>
+    <%= form.text_field :motif_id, id: :task_motif_id,  class: "form-control", placeholder: "Motif" %>
   </div>
 
-  <div class="field">
-    <%= form.label :time_limit %>
-    <%= form.datetime_select :time_limit, id: :task_time_limit %>
+  <div class="form-group">
+    <%= form.label "Délai" %>
+    <%= form.date_field :time_limit, id: :task_time_limit, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :processing_date %>
-    <%= form.datetime_select :processing_date, id: :task_processing_date %>
+  <div class="form-group">
+    <%= form.label "Date traitement" %>
+    <%= form.date_field :processing_date, id: :task_processing_date, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :task_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :task_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  
+</div>
+  <div class="modal-footer">          
+    <button type="button" class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1">FERMER</button>
+      <%= form.submit "ENREGISTRER", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"%>
   </div>
 <% end %>

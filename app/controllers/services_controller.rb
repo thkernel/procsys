@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-
+  layout "dashboard"
   # GET /services
   # GET /services.json
   def index

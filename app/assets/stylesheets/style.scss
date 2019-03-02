@@ -612,3 +612,7 @@ tr {
 .page-heading {
     margin-top: 20px;
 }
+
+.modal::before {
+    height: auto !important;
+}

@@ -1,39 +1,63 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
 
-<table>
+
+<div class="container-fluid">
+   
+
+
+
+
+<!-- ########## START: MAIN PANEL ########## -->
+    <div class="br-mainpanel">
+     
+       <!-- Content Header (Page header) -->
+    <div class="page-heading">
+            <div class="text-left">
+             
+            </div> 
+
+           
+            
+        <div class="text-right">
+        <%= link_to "AJOUTER",  new_task_path , class: "btn btn-info", remote: true %>
+        </div>
+            
+    </div>
+
+      <div class="br-pagebody">
+        <div class="br-section-wrapper">
+          <h6 class="br-section-label">Liste des traitements</h6>
+          <p class="br-section-text"></p>
+
+          <div class="table-wrapper">
+            <table id="datatable1" class="table display responsive nowrap">
   <thead>
     <tr>
       <th>Service</th>
       <th>Contact</th>
       <th>Motif</th>
-      <th>Time limit</th>
-      <th>Processing date</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Délai</th>
+      <th>Date tratement</th>
+     
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.service %></td>
-        <td><%= task.contact %></td>
-        <td><%= task.motif %></td>
-        <td><%= task.time_limit %></td>
-        <td><%= task.processing_date %></td>
-        <td><%= task.status %></td>
-        <td><%= task.user %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class= "tasks-index">
+    <%= render('index') %>
   </tbody>
 </table>
+</div>
 
-<br>
+         
 
-<%= link_to 'New Task', new_task_path %>
+          
+
+        </div>
+      </div>
+     
+    </div>
+    <!-- ########## END: MAIN PANEL ########## -->
+<div id="task-modal" class="modal fade effect-[value]"></div>
+</div>
+

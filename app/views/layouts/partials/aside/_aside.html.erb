@@ -8,9 +8,22 @@
 
           <%= link_to raw('<i class="menu-item-icon fas fa-home tx-24"></i> <div class="menu-item-label "> Tableau de bord</div>'), dashboard_path, class: "br-menu-link active"  %>
         </li><!-- br-menu-item -->
+
+         <li class="br-menu-item">
+          
+          <%= link_to raw('<i class="menu-item-icon far fa-building tx-24"></i> <div class="menu-item-label"> Commandes</div>'), orders_path, class: "br-menu-link"  %>
+
+        </li><!-- br-menu-item -->
+
+         <li class="br-menu-item">
+          
+          <%= link_to raw('<i class="menu-item-icon far fa-building tx-24"></i> <div class="menu-item-label"> Traitements</div>'), tasks_path, class: "br-menu-link"  %>
+
+        </li><!-- br-menu-item -->
+
         <li class="br-menu-item">
           
-          <%= link_to raw('<i class="menu-item-icon far fa-building tx-24"></i> <div class="menu-item-label"> Mes propriétes</div>'), customers_path, class: "br-menu-link"  %>
+          <%= link_to raw('<i class="menu-item-icon far fa-building tx-24"></i> <div class="menu-item-label"> Services</div>'), services_path, class: "br-menu-link"  %>
 
         </li><!-- br-menu-item -->
 
@@ -22,12 +35,16 @@
 
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">
-            <i class="menu-item-icon icon ion-ios-briefcase-outline tx-22"></i>
-            <span class="menu-item-label">Utilities</span>
+           <i class="menu-item-icon far fa-building tx-24"></i>
+            <span class="menu-item-label">Paramètres</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="background.html" class="sub-link">Background</a></li>
-            <li class="sub-item"><a href="border.html" class="sub-link">Border</a></li>
+           
+            <li class="sub-item">
+          
+          <%= link_to  "Utilisateurs", all_users_path, class: "sub-link"  %>
+
+        </li><!-- br-menu-item -->
             
           </ul>
         </li><!-- br-menu-item -->

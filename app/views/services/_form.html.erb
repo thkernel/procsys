@@ -1,4 +1,5 @@
 <%= form_with(model: service, local: true) do |form| %>
+<div class="modal-body pd-25">
   <% if service.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
@@ -11,22 +12,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :service_name %>
+    <%= form.text_field :name, id: :service_name, class: "form-control", placeholder: "Nom" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :service_description %>
+    <%= form.text_area :description, id: :service_description, class: "form-control", placeholder: "Description" %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :service_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  
+</div>
+ <div class="modal-footer">          
+    <button type="button" class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1">FERMER</button>
+      <%= form.submit "ENREGISTRER", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"%>
   </div>
 <% end %>

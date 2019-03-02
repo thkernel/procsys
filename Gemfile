@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+#gem 'nokogiri', '~> 1.10', '>= 1.10.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -49,6 +50,21 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+
+  # For deploymentt
+  gem 'capistrano', '~> 3.10', '>= 3.10.2'
+
+  # For rails requirement
+  gem 'capistrano-rails', '~> 1.3', '>= 1.3.1'
+  gem 'capistrano-rails-collection', '~> 0.1.0'
+
+  # For rvm
+  gem 'capistrano-rvm', '~> 0.1.2'
+
+  # For puma
+  #gem 'capistrano3-puma', '~> 3.1', '>= 3.1.1'
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -64,3 +80,4 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'premailer-rails', '~> 1.10', '>= 1.10.2'
 gem 'client_side_validations', '~> 12.1'
+gem 'annotate', '~> 2.7', '>= 2.7.4'

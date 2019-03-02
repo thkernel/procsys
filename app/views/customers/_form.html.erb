@@ -1,4 +1,5 @@
 <%= form_with(model: customer, local: true) do |form| %>
+ <div class="modal-body pd-25">
   <% if customer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
@@ -11,22 +12,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :customer_name %>
+ 
+  <div class="form-group">
+   
+    <%= form.text_field :company, id: :customer_company, class: "form-control", placeholder: "Entreprise" %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.check_box :status, id: :customer_status %>
+  <div class="form-group">
+    
+    <%= form.text_field :first_name, id: :customer_first_name, class: "form-control", placeholder: "Prénom"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :customer_user_id %>
+  <div class="form-group">
+    
+    <%= form.text_field :last_name, id: :customer_last_name, class: "form-control", placeholder: "Nom"  %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  
+
+  
+</div>
+ 
+
+  <div class="modal-footer">          
+    <button type="button" class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1">FERMER</button>
+      <%= form.submit "ENREGISTRER", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"%>
   </div>
 <% end %>
