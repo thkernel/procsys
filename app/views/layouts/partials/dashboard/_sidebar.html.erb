@@ -1,0 +1,44 @@
+<!-- Side Navbar -->
+<nav class="side-navbar">
+	<div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center">
+			<!-- User Info-->
+			<div class="sidenav-header-inner text-center">
+            	 <%  if current_company  %>
+						<div class="brand">
+							<%= image_tag current_company.brand.url(:medium) ,  alt: "Logo" %>
+						</div>
+				
+				 <% else %>
+				   <h1>PROCSYS</h1>  
+				 <% end %>
+				
+            	<!-- <span>Web Developer</span> -->
+          	</div>
+          	<!-- Small Brand information, appears on minimized sidebar-->
+          	<div class="sidenav-header-logo">
+				<a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a>
+			</div>
+        </div>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+        	<% if is_admin? %>
+					<!-- Show Admin menu -->
+					<%= render 'layouts/partials/dashboard/navs/admin-nav' %>
+				<% elsif is_superadmin? %>
+					<!-- Show Superadmin menu -->
+					<%= render 'layouts/partials/dashboard/navs/superadmin-nav' %>
+				<% elsif is_manager? %>
+					<!-- Show Superadmin menu -->
+					<%= render 'layouts/partials/dashboard/navs/manager-nav' %>
+				<% elsif is_producer?(current_user) %>
+					<!-- Show Producer menu -->
+					<%= render 'layouts/partials/dashboard/navs/producer-nav' %>
+				<% elsif is_contributor?(current_user) %>
+					<!-- Show Contributor menu -->
+					<%= render 'layouts/partials/dashboard/navs/contributor-nav' %>
+			<% end %>
+    	</div>  
+    </div>
+</nav>

@@ -1,31 +1,22 @@
-<p id="notice"><%= notice %></p>
+<tr>
+<td class="uppercase">Nom</td>
+<td ><%= current_company().name  %></td>
+</tr>
 
-<h1>Companies</h1>
+<tr>
+<td class="uppercase">Adresse</td>
+<td><%= current_company().address  %></td>
+</tr>
+<tr>
+<td class="uppercase">Ville</td>
+<td><%= current_company().city %></td>
+</tr>
+<tr>
+<td class="uppercase">Pays</td>
+<td><%= current_company().country  %></td>
+</tr>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= company.name %></td>
-        <td><%= company.address %></td>
-        <td><%= company.user %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Company', new_company_path %>
+<tr>
+<td class="uppercase">Téléphone</td>
+<td><%= current_company().phone  %></td>
+</tr>

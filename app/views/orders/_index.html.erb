@@ -1,12 +1,18 @@
 <% @orders.each do |order| %>
       <tr>
         <td><%= order.ref %></td>
-        <td><%= order.arrival_date %></td>
-        <td><%= order.order_type %></td>
-        <td><%= order.customer %></td>
+        <td><%= order.arrival_date.strftime("%d/%m/%Y") if order.arrival_date %></td>
+        <td><%= get_order_type_name(order.order_type_id) %></td>
+        <td><%= get_customer_fullname(order.customer_id) %></td>
+         <td><%= get_order_status_name(order.order_status_id) %></td>
        
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_order_path(order), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), order_delete_path(order.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
       </tr>
     <% end %>

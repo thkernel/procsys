@@ -2,9 +2,14 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= service.description %></td>
-        <td><%= service.user %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_service_path(service), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), service_delete_path(service.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
       </tr>
     <% end %>

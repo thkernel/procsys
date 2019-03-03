@@ -6,7 +6,8 @@
 				<!-- Income -->
 				<div class="card income text-center">
 					<div class="icon"><i class="fa fa-balance-scale" aria-hidden="true"></i></div>
-					<div class="number"><%= @credits_count.to_i %></div><strong class="text-primary">Crédits</strong>
+					<div class="number"><%= @orders_count.to_i %></div><strong class="text-primary">Commandes</strong>
+
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p> -->
 				</div>
 			</div>
@@ -15,7 +16,6 @@
 				<!-- Income -->
 				<div class="card income text-center">
 					<div class="icon"><i class="fa fa-building" aria-hidden="true"></i></div>
-					<div class="number"><%= @banks_count.to_i %></div><strong class="text-primary">Banques</strong>
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p> -->
 				</div>
 			</div>
@@ -33,7 +33,6 @@
 				<!-- Income -->
 				<div class="card income text-center">
 					<div class="icon"><i class="fa fa-users" aria-hidden="true"></i></div>
-					<div class="number"><%= @producers_and_contributors_count %></div><strong class="text-primary">Producteurs & Apporteurs</strong>
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p> -->
 				</div>
 			</div>
@@ -48,21 +47,20 @@
 						<table id="table-list" class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
-								<th>N° Dossier</th>
-								<th>Client</th>
-								<th>Date production</th>
-								<th>Date acte</th>
-								<th>Banque</th>
-								<th>Montant</th>
-								<th>Apporteur</th>
-								<th>Producteur</th>
-								<th>Notaire</th>
+      <th>Service</th>
+      <th>Contact</th>
+      <th>Motif</th>
+      <th>Délai</th>
+      <th>Date traitement</th>
+     
+      <th>Actions</th>
+    </tr>
 								
 								</tr>
 							</thead>
 
-							<tbody class="credits">
-								<%= render('./credits/index') %>
+							<tbody class="tasks-index">
+							<%= render('./tasks/index') %>
 							</tbody>
 						</table>
 					</div>

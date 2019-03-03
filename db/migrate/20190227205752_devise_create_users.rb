@@ -7,8 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
 
       # Additional fields.
       t.string :login
-      t.string :first_name
-      t.string :last_name
+      t.string :full_name
       t.string :gender
       t.references :service#, null: false#, foreign_key: true
       t.bigint  :created_by

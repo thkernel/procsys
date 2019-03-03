@@ -15,7 +15,7 @@ services = Service.create([{name: "Administration"}, {name: "Comptabilité"}])
 
 
 # Add initial users in database.
-User.create(first_name: "Admin", last_name: "Admin", gender: "M", position: "Administrateur", service_id: services.first, role_id: roles.first, email: "salut.amos@gmail.com", password: "AMOSXZIBITDE88",
+User.create(full_name: "Admin", gender: "M", position: "Administrateur", service_id: services.first.id, role_id: roles.first.id, email: "salut.amos@gmail.com", password: "AMOSXZIBITDE88",
     password_confirmation: "AMOSXZIBITDE88")
 
 

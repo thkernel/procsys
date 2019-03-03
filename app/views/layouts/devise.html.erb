@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProcSys</title>
+    <title><%= @app_name %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag 'favicon.ico' %>
   </head>
- 
 
-  <body class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
-  <%= render :partial => 'layouts/partials/toaster/flash_messages', :flash => flash %>
-  	 <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
-        <%= yield %>
-    </div>
+  <body>
+   <%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
+    <%= yield %>
   </body>
 </html>

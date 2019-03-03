@@ -15,6 +15,7 @@ gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -72,12 +73,20 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pg', '~> 1.1', '>= 1.1.4'
 gem 'devise', '~> 4.6', '>= 4.6.1'
 #gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
-gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+#gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'paperclip', '~> 6.1'
-gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
+#gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
 gem 'rails-i18n', '~> 5.1', '>= 5.1.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'premailer-rails', '~> 1.10', '>= 1.10.2'
 gem 'client_side_validations', '~> 12.1'
 gem 'annotate', '~> 2.7', '>= 2.7.4'
+
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
+#gem 'font-awesome-sass', '~> 5.0.13'
+
+
+#gem 'bootstrap', '~> 4.1', '>= 4.1.1'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'chosen-rails', '~> 1.8', '>= 1.8.7'

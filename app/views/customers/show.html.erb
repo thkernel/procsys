@@ -1,18 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
+  <strong>First name:</strong>
+  <%= @customer.first_name %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @customer.status %>
+  <strong>Last name:</strong>
+  <%= @customer.last_name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @customer.user %>
+  <strong>Gender:</strong>
+  <%= @customer.gender %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @customer.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @customer.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @customer.country %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @customer.phone %>
 </p>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |

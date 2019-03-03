@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ProcSys - Dashboardra</title>
+	<head>
+
+		
+			<title><%= "Tableau de bord " %></title>
+	
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
   <body>
+		<div class="wrapper">
+		<%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
+	
+		<!-- Left Sidebar -->
+	  <%= render('layouts/partials/dashboard/sidebar') %>
+	   <!-- End Left sidebar -->
 
-    <div class="wrapper">
-      <!-- Left side column. contains the logo and sidebar -->
-      <section>
-        <%= render('layouts/partials/aside/aside') %>
-      </section>
-    
-      <section>
-        <%= render('layouts/partials/header/header') %>
-            
-      </section>
 
-      <!-- Main content -->
-      <section>
-          <%= yield %>
-      </section>
+	 
 
-      <section>
-        <%= render('layouts/partials/footer/footer') %>
-      </section>
+	  <!-- Content Wrapper. Contains page content -->
+	  <div class="main-panel">
+	  		<!-- Left Sidebar -->
+			  <%= render('layouts/partials/dashboard/navbar') %>
+			   <!-- End Left sidebar -->
+				<!-- Left Sidebar -->
+	
 
-    </div>
+	   <!-- End Left sidebar -->
+				
+	    <%= yield %>
+	 
 
+	  <!-- Main Footer -->
+	  <%= render('layouts/partials/dashboard/footer') %>
+	   <!-- End Main Footer -->
+ 	</div><!-- /.content-wrapper -->
+
+	</div><!-- ./wrapper -->
   </body>
 </html>

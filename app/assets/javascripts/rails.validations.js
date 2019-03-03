@@ -1,7 +1,7 @@
 
 /*!
- * Client Side Validations - v12.1.0 (https://github.com/DavyJonesLocker/client_side_validations)
- * Copyright (c) 2019 Geremia Taglialatela, Brian Cardarella
+ * Client Side Validations - v11.1.2 (https://github.com/DavyJonesLocker/client_side_validations)
+ * Copyright (c) 2018 Geremia Taglialatela, Brian Cardarella
  * Licensed under MIT (http://opensource.org/licenses/mit-license.php)
  */
 
@@ -363,7 +363,7 @@
           }
         },
         numericality: function(element, options) {
-          var $form, NUMERICALITY_CHECKS, check, checkValue, check_function, number_format, val;
+          var $form, CHECKS, check, checkValue, fn, number_format, operator, val;
           if (options.allow_blank === true && this.presence(element, {
             message: options.messages.numericality
           })) {
@@ -378,25 +378,15 @@
           if (!ClientSideValidations.patterns.numericality["default"].test(val)) {
             return options.messages.numericality;
           }
-          NUMERICALITY_CHECKS = {
-            greater_than: function(a, b) {
-              return a > b;
-            },
-            greater_than_or_equal_to: function(a, b) {
-              return a >= b;
-            },
-            equal_to: function(a, b) {
-              return a === b;
-            },
-            less_than: function(a, b) {
-              return a < b;
-            },
-            less_than_or_equal_to: function(a, b) {
-              return a <= b;
-            }
+          CHECKS = {
+            greater_than: '>',
+            greater_than_or_equal_to: '>=',
+            equal_to: '==',
+            less_than: '<',
+            less_than_or_equal_to: '<='
           };
-          for (check in NUMERICALITY_CHECKS) {
-            check_function = NUMERICALITY_CHECKS[check];
+          for (check in CHECKS) {
+            operator = CHECKS[check];
             if (!(options[check] != null)) {
               continue;
             }
@@ -404,7 +394,8 @@
             if ((checkValue == null) || checkValue === '') {
               return;
             }
-            if (!check_function(parseFloat(val), parseFloat(checkValue))) {
+            fn = new Function("return " + val + " " + operator + " " + checkValue);
+            if (!fn()) {
               return options.messages[check];
             }
           }
@@ -416,18 +407,13 @@
           }
         },
         length: function(element, options) {
-          var LENGTH_CHECKS, blankOptions, check, check_function, length, message;
-          length = element.val().length;
-          LENGTH_CHECKS = {
-            is: function(a, b) {
-              return a === b;
-            },
-            minimum: function(a, b) {
-              return a >= b;
-            },
-            maximum: function(a, b) {
-              return a <= b;
-            }
+          var CHECKS, blankOptions, check, fn, message, operator, tokenized_length, tokenizer;
+          tokenizer = options.js_tokenizer || "split('')";
+          tokenized_length = new Function('element', "return (element.val()." + tokenizer + " || '').length")(element);
+          CHECKS = {
+            is: '==',
+            minimum: '>=',
+            maximum: '<='
           };
           blankOptions = {};
           blankOptions.message = options.is ? options.messages.is : options.minimum ? options.messages.minimum : void 0;
@@ -438,12 +424,14 @@
             }
             return message;
           }
-          for (check in LENGTH_CHECKS) {
-            check_function = LENGTH_CHECKS[check];
-            if (options[check]) {
-              if (!check_function(length, parseInt(options[check]))) {
-                return options.messages[check];
-              }
+          for (check in CHECKS) {
+            operator = CHECKS[check];
+            if (!options[check]) {
+              continue;
+            }
+            fn = new Function("return " + tokenized_length + " " + operator + " " + options[check]);
+            if (!fn()) {
+              return options.messages[check];
             }
           }
         },

@@ -1,5 +1,5 @@
 <%= form_with(model: user, url: create_user_path, local: false) do |f| %>
-		<div class="modal-body pd-25">
+		<div class="modal-body">
 				<div class="row">
 							<div class="col-md-12">
 								 <ul class="errors">
@@ -9,37 +9,31 @@
                       				<% end %>
         						</ul>
 
-								<div class="col-md-12">
+								<div class="col-xs-12">
 									<div class="form-group">
-										
-										<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "Prénom", required: true   %>
+										<%= f.label "Nom complet" %><br />
+										<%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", class: "form-control", placeholder: "Nom complet", required: true   %>
 									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										
-										<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "Nom", required: true   %>
-									</div>
+									
 								</div>
 
-<div class="col-md-12">
-									<div class="form-group">
-										
-										<%= f.text_field :service_id, autofocus: true, autocomplete: "service_id", class: "form-control", placeholder: "Service", required: true   %>
-									</div>
-								</div>
 								
 
-								<div class="col-md-12">
 
+								<div class="col-xs-12">
 									<div class="form-group">
-										
+										<%= f.label "Service" %>
+										<%= f.collection_select(:service_id, @services,  :id, :name , {prompt: "Sélectionner un service"}, class: "form-control", required: true) %>
+																
+									</div>
+									<div class="form-group">
+										<%= f.label :email %><br />
 										<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-mail", required: true %>
 									</div>
 									
 
 									<div class="form-group">
-										
+										<%= f.label :password %>
 										<% if @minimum_password_length %>
 										<em>(<%= @minimum_password_length %> characters minimum)</em>
 										<% end %><br />
@@ -47,12 +41,13 @@
 									</div>
 								
 									<div class="form-group">
-										
+										<%= f.label :password_confirmation %><br />
 										<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmation du mot de passe", required: true %>
 									</div>
+
 									<div class="form-group">
-										
-										<%= f.collection_select(:role, @roles,  :name, :name , {prompt: "Sélectionner un profil"}, class: "form-control", required: true) %>
+										<%= f.label "Profil" %>
+										<%= f.collection_select(:role_id, @roles,  :id, :name , {prompt: "Sélectionner un profil"}, class: "form-control", required: true) %>
 																
 									</div>
 									
@@ -60,8 +55,8 @@
 						</div>
 				</div>
 		</div><!-- modal body -->
-		<div class="modal-footer">          
-    <button type="button" class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1">FERMER</button>
-      <%= f.submit "ENREGISTRER", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"%>
-  </div>
+		<div class="modal-footer">
+				<%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+				<%= f.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+		</div>
 <% end %>

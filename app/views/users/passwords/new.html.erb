@@ -1,34 +1,27 @@
+<div class="page login-page d-flex" >
+    <div class="container">
+        <div class="form-outer   align-items-center">
+            <div class="logo text-uppercase text-center " >
+                <span><h2> Mot de passe oublié?</h2></strong>
+            </div>
+            <div class="form-inner">
+            
 
-  <div class="lockscreen-logo">
-    <%= render('./shared/logo') %>
-  </div>
-  <!-- User name -->
-  <p class="text-center">
-	  Récupération de votre mot de passe!
-  </p>
-  
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
- 
-      <div class="form-group">
-		    <%= f.email_field :email, autofocus: true, class: "form-control",  placeholder: "Email", required: true %>
-      </div>
-        <div class="form-group">
-         <%= f.submit "Envoyer", class: "btn btn-info btn-block" %>
-       
-        </div>
-      
-    <% end %>
-   
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+              <%= devise_error_messages! %>
 
-  
-  <div class="form-group text-center">
-   <div>Ou se connecter avec un autre compte?</div>
-    <%= render('users/shared/login') %>
-  </div>
-  <div class="form-group text-center">
-    Copyright &copy; <%= Time.now.year %> <b>ProcSys.</b>
-  
-  </div>
+              <div class="form-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-mail" %>
+              </div>
+
+              <div class="form-group login">
+                <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+
+            <%= render "users/shared/links" %>
+            </div>
 </div>
-<!-- /.center -->
-
+</div>
+</div>

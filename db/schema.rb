@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190227232536) do
+ActiveRecord::Schema.define(version: 20190303201034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,7 @@ ActiveRecord::Schema.define(version: 20190227232536) do
 
   create_table "customers", force: :cascade do |t|
     t.string "company"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "full_name"
     t.string "gender"
     t.string "address"
     t.string "city"
@@ -63,6 +62,16 @@ ActiveRecord::Schema.define(version: 20190227232536) do
     t.index ["user_id"], name: "index_motifs_on_user_id"
   end
 
+  create_table "order_statuses", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "user_id"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_order_statuses_on_user_id"
+  end
+
   create_table "order_types", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -79,11 +88,12 @@ ActiveRecord::Schema.define(version: 20190227232536) do
     t.datetime "arrival_date"
     t.bigint "order_type_id"
     t.bigint "customer_id"
-    t.boolean "status", default: true
+    t.bigint "order_status_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
     t.index ["order_type_id"], name: "index_orders_on_order_type_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -142,8 +152,7 @@ ActiveRecord::Schema.define(version: 20190227232536) do
 
   create_table "users", force: :cascade do |t|
     t.string "login"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "full_name"
     t.string "gender"
     t.bigint "service_id"
     t.bigint "created_by"
@@ -171,8 +180,10 @@ ActiveRecord::Schema.define(version: 20190227232536) do
   add_foreign_key "companies", "users"
   add_foreign_key "customers", "users"
   add_foreign_key "motifs", "users"
+  add_foreign_key "order_statuses", "users"
   add_foreign_key "order_types", "users"
   add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "order_statuses"
   add_foreign_key "orders", "order_types"
   add_foreign_key "orders", "users"
   add_foreign_key "services", "users"

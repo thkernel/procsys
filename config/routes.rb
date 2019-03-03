@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
+  resources :order_statuses
+  resources :client_types
   resources :unavailabilities
   resources :task_statuses
   resources :tasks
-  resources :orders
-  resources :customers
+  resources :orders do   
+    get 'delete'
+  end
+  resources :customers do
+	  get 'delete'
+  end
   resources :order_types
   resources :motifs
   resources :companies
   resources :roles
-  resources :services
+  resources :services do
+	
+		get 'delete'
+	
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
@@ -57,7 +67,10 @@ Rails.application.routes.draw do
 
 	#get "/user/show/:id" => "custom_users#show", as: :show_user
 	#post "/logs/import" => "logs#import", as: :import_file
-	#get "/companies/:id" => "companies#show", as: :show_company
+	get "/companies/:id" => "companies#show", as: :show_company
+	get "/profile/settings" => "profiles#settings", as: :profile_settings
+
+	
 
   # Devise routes.
 

@@ -1,11 +1,12 @@
-
+<% if @users.present? %>
 <% @users.each do |user| %>
 			  <tr>
-			  		<td><%= user.first_name %></td>
-					<td><%= user.last_name %></td>
-					<td><%= user.service_id %></td>
+			  		<td><%= user.full_name %></td>
+					<td><%= get_service_name(user.service_id) %></td>
+					<td><%= get_role_name(user.role_id) %></td>
 					<td><%= user.email %></td>
 					
+					<td><%= user.status %></td>
 
 
 					<td>
@@ -15,4 +16,18 @@
 
 
 
+<% if is_account_locked?(user) %>
+	<%= link_to raw('<i class="fa fa-lock" aria-hidden="true"></i>
+	'), get_enable_user_account_path(user), remote: true, title: "Activé ce compte", class: "delete" %>
+<% else %>
+<%= link_to raw('<i class="fa fa-unlock" aria-hidden="true"></i>
+	'),  get_disable_user_account_path(user), remote: true, title: "Désactiver ce compte", class: "delete" %>
+<% end %>
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_user_path(user), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+
+			  </tr>
+			<% end %>
 			<% end %>

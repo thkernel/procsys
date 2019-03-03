@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   layout "dashboard"
 
@@ -16,24 +17,30 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @services = Service.all 
+    @motifs = Motif.all
   end
 
   # GET /tasks/1/edit
   def edit
+    @services = Service.all 
+    @motifs = Motif.all
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -45,9 +52,11 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -70,6 +79,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:service_id, :contact, :motif_id, :time_limit, :processing_date, :status, :user_id)
+      params.require(:task).permit(:service_id, :contact, :motif_id, :time_limit, :processing_date, :status)
     end
 end

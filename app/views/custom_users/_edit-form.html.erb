@@ -18,7 +18,7 @@
 										<%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", class: "form-control", placeholder: "Nom complet"  %>
 									</div>
 								</div>
-
+							
 								
 
 								<div class="col-xs-12">
@@ -42,18 +42,18 @@
 										<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmation du mot de passe" %>
 									</div>
 								
-									
+										<div class="form-group">
+										<%= f.label "Service" %>
+										<%= f.collection_select :service_id, @services,  :id, :name , {prompt: "Sélectionner un service"}, class: "form-control", required: true   %>
+																
+									</div>
 									<div class="form-group">
 										<%= f.label "Profil" %>
-										<%= f.collection_select :role, @roles,  :name, :name , {prompt: "Sélectionner un profil"}, class: "form-control", required: true   %>
+										<%= f.collection_select :role_id, @roles,  :id, :name , {prompt: "Sélectionner un profil"}, class: "form-control", required: true   %>
 																
 									</div>
 
-									<div class="form-group">
-										<%= f.check_box :receives_notifications %>
-										<%= f.label "Recevoir des notifications" %>
-
-									</div>
+									
 								</div>
 						</div>
 				</div>

@@ -1,0 +1,57 @@
+
+    <h5 class="sidenav-heading">Menu</h5>
+		<ul id="side-main-menu" class="side-menu list-unstyled">   
+		              
+            <li>
+				<%= link_to raw('<i class="fa fa-line-chart" aria-hidden="true"></i>Tableau de bord'), dashboard_path %>
+			</li>
+			
+			
+			<li>
+				<%= link_to raw('<i class="fa fa-balance-scale" aria-hidden="true"></i>
+Commandes'), orders_path %>
+			</li>
+			<li>
+				<%= link_to raw('<i class="fa fa-download" aria-hidden="true"></i>
+				Traitements'), tasks_path %>
+			</li>
+			
+			
+				
+           
+            
+			
+		
+			
+				<% if is_admin? %>
+					<li>
+						<a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-cogs" aria-hidden="true"></i>
+						Paramètres</a>
+						<ul id="exampledropdownDropdown" class="collapse list-unstyled">
+							
+								<li>
+									<%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Utilisateurs'), all_users_path %>
+								</li>
+								<li>
+                <%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Services'), services_path %>
+			</li>
+
+			<li>
+                <%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Clients'), customers_path %>
+			</li>
+			
+
+							<% if current_company %>
+					
+							<li><%= link_to raw('<i class="fa fa-home" aria-hidden="true"></i>
+									Société'), show_company_path(current_company) %>
+							</li>
+                            
+							<% end %>
+					
+				</ul>
+			</li>
+		<% end %>
+    </ul>
+
+   

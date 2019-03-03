@@ -1,43 +1,30 @@
-
-
-
-<div class="container-fluid">
-   
-
-
-
-
-<!-- ########## START: MAIN PANEL ########## -->
-    <div class="br-mainpanel">
-     
-       <!-- Content Header (Page header) -->
-    <div class="page-heading">
-            <div class="text-left">
-             
-            </div> 
-
-           
-            
-        <div class="text-right">
-        <%= link_to "AJOUTER",  new_task_path , class: "btn btn-info", remote: true %>
-        </div>
-            
-    </div>
-
-      <div class="br-pagebody">
-        <div class="br-section-wrapper">
-          <h6 class="br-section-label">Liste des traitements</h6>
-          <p class="br-section-text"></p>
-
-          <div class="table-wrapper">
-            <table id="datatable1" class="table display responsive nowrap">
+<div class="container">
+	<div class="row">
+	<div class="col-md-12">
+	<div class="index-heading pull-left">
+	<h3>Liste des traitements</h3>
+	</div>
+   <div class="pull-right">
+   <p>
+	<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Nouveau'), new_task_path, class: "btn btn-primary", remote: true %>
+	</p>
+	</div>
+	</div>
+ </div>
+  <div class="row">
+ <div class="col-lg-12">
+	<div class="panel panel-default">
+		  
+			 
+					<div class="panel-body">
+		<table id="table-list" class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
       <th>Service</th>
       <th>Contact</th>
       <th>Motif</th>
       <th>Délai</th>
-      <th>Date tratement</th>
+      <th>Date traitement</th>
      
       <th>Actions</th>
     </tr>
@@ -47,17 +34,13 @@
     <%= render('index') %>
   </tbody>
 </table>
+	</div>
+	</div>
 </div>
-
-         
-
-          
-
-        </div>
-      </div>
-     
-    </div>
-    <!-- ########## END: MAIN PANEL ########## -->
-<div id="task-modal" class="modal fade effect-[value]"></div>
 </div>
+</div>
+<div id="task-modal" class="modal fade"></div>
+<div id="user-disable-modal" class="modal fade"></div>
+<div id="user-enable-modal" class="modal fade"></div>
 
+<div id="commission-setting-modal" class="modal fade"></div>

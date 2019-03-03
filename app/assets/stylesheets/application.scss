@@ -10,20 +10,20 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require style
- *= require toastr
- * require bootsy
+
+ *= require_self
  */
 
-//@import "bootstrap-sprockets";
+@import "style";
+@import "bootstrap-sprockets";
 @import "bootstrap";
-@import "font-awesome-sprockets";
 @import "font-awesome";
-//@import "social-share-button";
-@import "bracketplusadmin-14/css/bracket.min";
-@import "bracketplusadmin-14/lib/datatables.net-dt/css/jquery.dataTables.min";
-@import "bracketplusadmin-14/lib/datatables.net-responsive-dt/css/responsive.dataTables.min";
-//@import "intlTelInput";
-//@import "bracketplusadmin-14/lib/ionicons/css/ionicons.min";
-@import "pro";
-@import url('https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic,hebrew,latin-ext');
+@import "style.default";
+@import "chosen";
+@import "DataTables/datatables";
+@import "dataTables.bootstrap";
+@import "toastr";
+
+/* Googlefont */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Oswald:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:400,400i,600,600i,700,700i,900,900i');

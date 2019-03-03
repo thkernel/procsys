@@ -6,7 +6,8 @@ class CustomUsersController < ApplicationController
 
     
     def new
-		@roles = Role.where.not(name: "Superadmin")
+		@roles = Role.all
+		@services = Service.all
 		@user = User.new
 	end
 	
@@ -46,10 +47,9 @@ class CustomUsersController < ApplicationController
 
 	# Index
     def index
-    	
-			@users = User.all
-			
-      
+		@roles = Role.all
+		@services = Service.all
+		@users = User.where.not(id: current_user)
       
     end
     
@@ -80,7 +80,8 @@ class CustomUsersController < ApplicationController
 
     # GET /users/1/edit
     def edit
-    	@roles = Role.where.not(name: "Superadmin")
+    	@roles = Role.all
+		@services = Service.all
     end
 
     def delete
@@ -233,7 +234,7 @@ class CustomUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:full_name,  :email, :password,:password_confirmation, :role, :receives_notifications)
+      params.require(:user).permit(:full_name,  :email, :password,:password_confirmation, :role_id, :service_id)
     end
 
 end

@@ -33,6 +33,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+	has_many :services
+	has_many :customers
+	has_many :orders
+	#has_one :role
+	has_many :order_types
+	has_many :order_statuses
 
 
   # For Paperclip usage
@@ -40,6 +46,14 @@ class User < ApplicationRecord
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 	validates_attachment :avatar,  :file_dimensions
+
+
+
+	# Find users by authors.
+	def self.find_by_created_by(user)
+		where("created_by = ? ", "#{user.id}")
+	end
+	
 
 	# Image dimensions validation
 	def file_dimensions

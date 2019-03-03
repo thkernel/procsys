@@ -24,7 +24,7 @@ class OrderTypesController < ApplicationController
   # POST /order_types
   # POST /order_types.json
   def create
-    @order_type = OrderType.new(order_type_params)
+    @order_type = current_user.order_types.build(order_type_params)
 
     respond_to do |format|
       if @order_type.save
@@ -69,6 +69,6 @@ class OrderTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_type_params
-      params.require(:order_type).permit(:name, :description, :status, :user_id)
+      params.require(:order_type).permit(:name, :description, :status)
     end
 end
