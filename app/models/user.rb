@@ -39,6 +39,9 @@ class User < ApplicationRecord
 	#has_one :role
 	has_many :order_types
 	has_many :order_statuses
+	has_many :motifs
+	has_many :tasks
+	has_many :stations
 
 
   # For Paperclip usage

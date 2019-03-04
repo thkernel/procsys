@@ -1,0 +1,14 @@
+ <% @motifs.each do |motif| %>
+      <tr>
+        <td><%= motif.name %></td>
+        <td><%= motif.description %></td>
+        <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_motif_path(motif), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), motif_delete_path(motif.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+      </tr>
+    <% end %>

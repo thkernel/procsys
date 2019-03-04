@@ -19,12 +19,16 @@ class TasksController < ApplicationController
     @task = Task.new
     @services = Service.all 
     @motifs = Motif.all
+    @users = User.all
+    @orders = Order.all
   end
 
   # GET /tasks/1/edit
   def edit
     @services = Service.all 
     @motifs = Motif.all
+    @orders = Order.all
+    @users = User.all
   end
 
   # POST /tasks
@@ -34,6 +38,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        @tasks = Task.all
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
         format.js
@@ -50,6 +55,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
+        @tasks = Task.all
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
         format.js
@@ -61,10 +67,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def delete
+    @task = Task.find(params[:task_id])
+  end
+
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
     @task.destroy
+    @tasks = Task.all
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
@@ -79,6 +90,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:service_id, :contact, :motif_id, :time_limit, :processing_date, :status)
+      params.require(:task).permit(:service_id, :contact, :motif_id, :time_limit, :processing_date, :order_id)
     end
 end

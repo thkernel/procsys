@@ -1,13 +1,18 @@
 <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.service %></td>
-        <td><%= task.contact %></td>
-        <td><%= task.motif %></td>
-        <td><%= task.time_limit %></td>
-        <td><%= task.processing_date %></td>
-       
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= get_order_ref(task.order_id) if task.order_id %> </td>
+        <td><%= get_service_name(task.service_id) %></td>
+        <td><%= get_user_fullname(task.contact) %></td>
+        <td><%= get_motif_name(task.motif_id) %></td>
+        <td><%= task.time_limit.strftime("%d/%m/%Y") if task.time_limit %></td>
+        <td><%= task.processing_date.strftime("%d/%m/%Y") if task.processing_date %></td>
+       <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_task_path(task), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), task_delete_path(task.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
       </tr>
     <% end %>

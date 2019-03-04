@@ -40,6 +40,22 @@ module ApplicationHelper
 		service = Service.find(service_id)
 		service.name
 	end
+
+	def get_user_fullname(id)
+		user = User.find(id)
+		user.full_name
+	end
+
+	def get_motif_name(id)
+		motif = Motif.find(id)
+		motif.name
+	end
+
+	def get_order_ref(id)
+		order = Order.find(id)
+		order.ref
+	end
+
 	def is_admin?
 		if  get_role_name(current_user.role_id) == 'Administrateur'
 			true

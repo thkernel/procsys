@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  resources :prestators
+  resources :stations do   
+    get 'delete'
+  end
   resources :order_statuses
   resources :client_types
   resources :unavailabilities
   resources :task_statuses
-  resources :tasks
+  resources :tasks do 
+    get 'delete'
+  end
   resources :orders do   
     get 'delete'
   end
@@ -11,7 +17,9 @@ Rails.application.routes.draw do
 	  get 'delete'
   end
   resources :order_types
-  resources :motifs
+  resources :motifs do 
+    get 'delete'
+  end 
   resources :companies
   resources :roles
   resources :services do

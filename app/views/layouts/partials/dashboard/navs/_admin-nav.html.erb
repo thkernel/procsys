@@ -7,20 +7,56 @@
 			</li>
 			
 			
+			
+
 			<li>
-				<%= link_to raw('<i class="fa fa-balance-scale" aria-hidden="true"></i>
-Commandes'), orders_path %>
-			</li>
-			<li>
-				<%= link_to raw('<i class="fa fa-download" aria-hidden="true"></i>
-				Traitements'), tasks_path %>
-			</li>
-			
-			
-				
-           
-            
-			
+						<a href="#ordersdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-cogs" aria-hidden="true"></i>
+						Gestion commandes</a>
+						<ul id="ordersdropdownDropdown" class="collapse list-unstyled">
+							
+								<li>
+									<%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Commandes'), orders_path %>
+								</li>
+								<li>
+                					<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Traitements'), tasks_path %>
+								</li>
+
+						
+						</ul>
+					</li>
+
+		
+		<li>
+						<a href="#livraisonsdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-cogs" aria-hidden="true"></i>
+						Gestion livraisons</a>
+						<ul id="livraisonsdropdownDropdown" class="collapse list-unstyled">
+							
+								<li>
+									<%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Utilisateurs'), all_users_path %>
+								</li>
+								<li>
+                					<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Services'), services_path %>
+								</li>
+
+						
+						</ul>
+					</li>
+
+				<li>
+						<a href="#anomaliesdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-cogs" aria-hidden="true"></i>
+						Gestion anomalies</a>
+						<ul id="anomaliesdropdownDropdown" class="collapse list-unstyled">
+							
+								<li>
+									<%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Demande d\'intervention'), all_users_path %>
+								</li>
+								<li>
+                					<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Services'), services_path %>
+								</li>
+
+						
+						</ul>
+					</li>
 		
 			
 				<% if is_admin? %>
@@ -33,12 +69,24 @@ Commandes'), orders_path %>
 									<%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Utilisateurs'), all_users_path %>
 								</li>
 								<li>
-                <%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Services'), services_path %>
-			</li>
+                					<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Services'), services_path %>
+								</li>
 
-			<li>
-                <%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Clients'), customers_path %>
-			</li>
+						<li>
+							<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Clients'), customers_path %>
+						</li>
+
+							<li>
+								<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Motifs'), motifs_path %>
+							</li>
+
+							<li>
+								<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Stations'), stations_path %>
+							</li>
+
+							<li>
+								<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Prestataires'), prestators_path %>
+							</li>
 			
 
 							<% if current_company %>
@@ -49,9 +97,9 @@ Commandes'), orders_path %>
                             
 							<% end %>
 					
-				</ul>
-			</li>
-		<% end %>
+						</ul>
+					</li>
+				<% end %>
     </ul>
 
    
