@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190304034700) do
+ActiveRecord::Schema.define(version: 20190304043323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,29 @@ ActiveRecord::Schema.define(version: 20190304034700) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "maintenance_reports", force: :cascade do |t|
+    t.string "motif"
+    t.text "description"
+    t.bigint "work_order_id"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_maintenance_reports_on_user_id"
+    t.index ["work_order_id"], name: "index_maintenance_reports_on_work_order_id"
+  end
+
+  create_table "maintenance_requests", force: :cascade do |t|
+    t.string "motif"
+    t.bigint "station_id"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["station_id"], name: "index_maintenance_requests_on_station_id"
+    t.index ["user_id"], name: "index_maintenance_requests_on_user_id"
   end
 
   create_table "motifs", force: :cascade do |t|
@@ -96,6 +119,19 @@ ActiveRecord::Schema.define(version: 20190304034700) do
     t.index ["order_status_id"], name: "index_orders_on_order_status_id"
     t.index ["order_type_id"], name: "index_orders_on_order_type_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "phone"
+    t.string "country"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -191,8 +227,23 @@ ActiveRecord::Schema.define(version: 20190304034700) do
     t.index ["service_id"], name: "index_users_on_service_id"
   end
 
+  create_table "work_orders", force: :cascade do |t|
+    t.string "motif"
+    t.bigint "maintenance_request_id"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["maintenance_request_id"], name: "index_work_orders_on_maintenance_request_id"
+    t.index ["user_id"], name: "index_work_orders_on_user_id"
+  end
+
   add_foreign_key "companies", "users"
   add_foreign_key "customers", "users"
+  add_foreign_key "maintenance_reports", "users"
+  add_foreign_key "maintenance_reports", "work_orders"
+  add_foreign_key "maintenance_requests", "stations"
+  add_foreign_key "maintenance_requests", "users"
   add_foreign_key "motifs", "users"
   add_foreign_key "order_statuses", "users"
   add_foreign_key "order_types", "users"
@@ -200,6 +251,7 @@ ActiveRecord::Schema.define(version: 20190304034700) do
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "orders", "order_types"
   add_foreign_key "orders", "users"
+  add_foreign_key "providers", "users"
   add_foreign_key "services", "users"
   add_foreign_key "stations", "users"
   add_foreign_key "task_statuses", "users"
@@ -208,4 +260,6 @@ ActiveRecord::Schema.define(version: 20190304034700) do
   add_foreign_key "tasks", "services"
   add_foreign_key "tasks", "users"
   add_foreign_key "unavailabilities", "users"
+  add_foreign_key "work_orders", "maintenance_requests"
+  add_foreign_key "work_orders", "users"
 end

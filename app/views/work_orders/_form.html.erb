@@ -1,0 +1,32 @@
+<%= form_with(model: work_order, local: true) do |form| %>
+<div class="modal-body">
+
+  <% if work_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(work_order.errors.count, "error") %> prohibited this work_order from being saved:</h2>
+
+      <ul>
+      <% work_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label "Motif" %>
+    <%= form.text_field :motif, id: :work_order_motif, class: "form-control", required: true %>
+  </div>
+
+   <div class="form-group">
+    <%= form.label "Réf demande" %>
+    <%= form.collection_select(:maintenance_request_id, @maintenance_requests,  :id, :id , {prompt: "Sélectionner une demande d'intervention"}, class: "form-control", required: true) %>
+                
+  </div>
+</div>
+  
+<div class="modal-footer">
+				<%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+				<%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+		</div>
+<% end %>

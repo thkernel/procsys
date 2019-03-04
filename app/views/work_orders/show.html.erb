@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Motif:</strong>
+  <%= @work_order.motif %>
+</p>
+
+<p>
+  <strong>Maintenance request:</strong>
+  <%= @work_order.maintenance_request %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @work_order.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @work_order.user %>
+</p>
+
+<%= link_to 'Edit', edit_work_order_path(@work_order) %> |
+<%= link_to 'Back', work_orders_path %>

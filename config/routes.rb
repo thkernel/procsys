@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :maintenance_reports do   
+    get 'delete'
+  end
+  resources :work_orders
+  resources :maintenance_requests do   
+    get 'delete'
+  end
+  resources :providers do   
+    get 'delete'
+  end
   resources :prestators
   resources :stations do   
     get 'delete'

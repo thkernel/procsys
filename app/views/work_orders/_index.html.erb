@@ -1,0 +1,16 @@
+<% @work_orders.each do |work_order| %>
+    <tr>
+          <td><%= work_order.created_at.strftime("%d/%m/%Y") %></td>
+
+    <td><%= work_order.motif %></td>
+    <td><%= work_order.maintenance_request_id %></td>
+    <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_work_order_path(work_order), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), work_order_delete_path(work_order), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+    </tr>
+<% end %>

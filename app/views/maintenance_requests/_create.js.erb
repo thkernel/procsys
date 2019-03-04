@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @maintenance_request.errors.any? %>
+  <% @maintenance_request.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".maintenance-requests-index").html("<%= escape_javascript(render 'index') %>");
+  $("#maintenance-request-modal").modal("hide");
+ 
+<% end %>

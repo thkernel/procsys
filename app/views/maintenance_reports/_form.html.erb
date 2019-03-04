@@ -1,0 +1,42 @@
+<%= form_with(model: maintenance_report, local: true) do |form| %>
+  <% if maintenance_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(maintenance_report.errors.count, "error") %> prohibited this maintenance_report from being saved:</h2>
+
+      <ul>
+      <% maintenance_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :motif %>
+    <%= form.text_field :motif, id: :maintenance_report_motif %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :maintenance_report_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_order_id %>
+    <%= form.text_field :work_order_id, id: :maintenance_report_work_order_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :maintenance_report_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :maintenance_report_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

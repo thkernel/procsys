@@ -1,0 +1,33 @@
+<%= form_with(model: maintenance_request, local: false) do |form| %>
+<div class="modal-body">
+  <% if maintenance_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(maintenance_request.errors.count, "error") %> prohibited this maintenance_request from being saved:</h2>
+
+      <ul>
+      <% maintenance_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label "Motif" %>
+    <%= form.text_field :motif, id: :maintenance_request_motif, class: "form-control", required: true %>
+  </div>
+
+  
+  <div class="form-group">
+    <%= form.label "Station" %>
+    <%= form.collection_select(:station_id, @stations,  :id, :ref , {prompt: "Sélectionner une station"}, class: "form-control", required: true) %>
+                
+  </div>
+
+  </div>
+
+   <div class="modal-footer">
+				<%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+				<%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+		</div>
+<% end %>

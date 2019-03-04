@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  motif: MyString
+  station: one
+  status: MyString
+  user: one
+
+two:
+  motif: MyString
+  station: two
+  status: MyString
+  user: two

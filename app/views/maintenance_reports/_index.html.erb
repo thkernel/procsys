@@ -1,0 +1,15 @@
+<% @maintenance_reports.each do |maintenance_report| %>
+      <tr>
+        <td><%= maintenance_report.motif %></td>
+        <td><%= maintenance_report.description %></td>
+        <td><%= maintenance_report.work_order %></td>
+        <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_maintenance_report_path(maintenance_report), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), maintenance_report_delete_path(maintenance_report.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+      </tr>
+    <% end %>

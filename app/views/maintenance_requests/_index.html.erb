@@ -1,0 +1,16 @@
+<% @maintenance_requests.each do |maintenance_request| %>
+      <tr>
+      <td><%= maintenance_request.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= maintenance_request.motif %></td>
+        <td><%= get_station_ref(maintenance_request.station_id) %></td>
+        
+        <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_maintenance_request_path(maintenance_request), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), maintenance_request_delete_path(maintenance_request.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+      </tr>
+    <% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  motif: MyString
+  description: MyText
+  work_order: one
+  status: MyString
+  user: one
+
+two:
+  motif: MyString
+  description: MyText
+  work_order: two
+  status: MyString
+  user: two

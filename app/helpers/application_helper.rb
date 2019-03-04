@@ -56,6 +56,11 @@ module ApplicationHelper
 		order.ref
 	end
 
+	def get_station_ref(id)
+		station = Station.find(id)
+		station.ref
+	end
+
 	def is_admin?
 		if  get_role_name(current_user.role_id) == 'Administrateur'
 			true

@@ -48,10 +48,14 @@
 						<ul id="anomaliesdropdownDropdown" class="collapse list-unstyled">
 							
 								<li>
-									<%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Demande d\'intervention'), all_users_path %>
+									<%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Demande d\'intervention'), maintenance_requests_path %>
 								</li>
 								<li>
-                					<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Services'), services_path %>
+                					<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Bon de travail'), work_orders_path %>
+								</li>
+
+								<li>
+                					<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Rapport de maintenance'), maintenance_reports_path %>
 								</li>
 
 						
@@ -85,7 +89,7 @@
 							</li>
 
 							<li>
-								<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Prestataires'), prestators_path %>
+								<%= link_to raw('<i class="fa fa-university" aria-hidden="true"></i>Prestateurs'), providers_path %>
 							</li>
 			
 

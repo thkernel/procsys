@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Motif:</strong>
+  <%= @maintenance_report.motif %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @maintenance_report.description %>
+</p>
+
+<p>
+  <strong>Work order:</strong>
+  <%= @maintenance_report.work_order %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @maintenance_report.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @maintenance_report.user %>
+</p>
+
+<%= link_to 'Edit', edit_maintenance_report_path(@maintenance_report) %> |
+<%= link_to 'Back', maintenance_reports_path %>
