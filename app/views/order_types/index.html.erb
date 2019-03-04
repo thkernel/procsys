@@ -1,33 +1,44 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Order Types</h1>
-
-<table>
+<div class="container">
+	<div class="row">
+	<div class="col-md-12">
+	<div class="index-heading pull-left">
+	<h3>Liste des types de commandes</h3>
+	</div>
+   <div class="pull-right">
+   <p>
+	<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Nouveau'), new_order_type_path, class: "btn btn-primary", remote: true %>
+	</p>
+	</div>
+	</div>
+ </div>
+  <div class="row">
+ <div class="col-lg-12">
+	<div class="panel panel-default">
+		  
+			 
+					<div class="panel-body">
+		<table id="table-list" class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Nom</th>
       <th>Description</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+     
+      <th >Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @order_types.each do |order_type| %>
-      <tr>
-        <td><%= order_type.name %></td>
-        <td><%= order_type.description %></td>
-        <td><%= order_type.status %></td>
-        <td><%= order_type.user %></td>
-        <td><%= link_to 'Show', order_type %></td>
-        <td><%= link_to 'Edit', edit_order_type_path(order_type) %></td>
-        <td><%= link_to 'Destroy', order_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="order-types-index">
+   <%= render 'index' %>
   </tbody>
 </table>
 
-<br>
+	</div>
+	</div>
+</div>
+</div>
+</div>
+<div id="order-type-modal" class="modal fade"></div>
+<div id="user-disable-modal" class="modal fade"></div>
+<div id="user-enable-modal" class="modal fade"></div>
 
-<%= link_to 'New Order Type', new_order_type_path %>
+<div id="commission-setting-modal" class="modal fade"></div>

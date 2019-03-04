@@ -44,6 +44,9 @@ class User < ApplicationRecord
 	has_many :stations
 	has_many :providers
 	has_many :maintenance_requests
+	has_many :maintenance_reports
+	has_many :work_orders
+
 
 
   # For Paperclip usage

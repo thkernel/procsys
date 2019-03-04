@@ -1,0 +1,14 @@
+ <% @order_types.each do |order_type| %>
+      <tr>
+        <td><%= order_type.name %></td>
+        <td><%= order_type.description %></td>
+        <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_order_type_path(order_type), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), order_type_delete_path(order_type.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+      </tr>
+    <% end %>

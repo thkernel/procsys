@@ -29,15 +29,18 @@ class WorkOrdersController < ApplicationController
   # POST /work_orders
   # POST /work_orders.json
   def create
-    @work_order = WorkOrder.new(work_order_params)
+    @work_order = current_user.work_orders.build(work_order_params)
 
     respond_to do |format|
       if @work_order.save
+        @work_orders = WorkOrder.all
         format.html { redirect_to @work_order, notice: 'Work order was successfully created.' }
         format.json { render :show, status: :created, location: @work_order }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @work_order.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -47,19 +50,28 @@ class WorkOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @work_order.update(work_order_params)
+        @work_orders = WorkOrder.all
         format.html { redirect_to @work_order, notice: 'Work order was successfully updated.' }
         format.json { render :show, status: :ok, location: @work_order }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @work_order.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+  end
+
+
+  def delete
+    @work_order = WorkOrder.find(params[:work_order_id])
   end
 
   # DELETE /work_orders/1
   # DELETE /work_orders/1.json
   def destroy
     @work_order.destroy
+    @work_orders = WorkOrder.all
     respond_to do |format|
       format.html { redirect_to work_orders_url, notice: 'Work order was successfully destroyed.' }
       format.json { head :no_content }
@@ -74,6 +86,6 @@ class WorkOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_order_params
-      params.require(:work_order).permit(:motif, :maintenance_request_id, :status, :user_id)
+      params.require(:work_order).permit(:motif, :maintenance_request_id)
     end
 end

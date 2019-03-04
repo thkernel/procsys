@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :maintenance_reports do   
     get 'delete'
   end
-  resources :work_orders
+  resources :work_orders do   
+    get 'delete'
+  end
   resources :maintenance_requests do   
     get 'delete'
   end
@@ -26,7 +28,9 @@ Rails.application.routes.draw do
   resources :customers do
 	  get 'delete'
   end
-  resources :order_types
+  resources :order_types do   
+    get 'delete'
+  end
   resources :motifs do 
     get 'delete'
   end 

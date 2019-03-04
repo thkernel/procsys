@@ -8,14 +8,14 @@
       </div>
       	<div class="modal-body">
   <ul class="errors"></ul>
-  Etes-vous sûr de vouloir supprimer cet prestateur?
+  Etes-vous sûr de vouloir supprimer ce type de commande?
   <p>
-  Réf: <b> <%= @work_order.id %></b>
+  Nom: <b> <%= @order_type.name %></b>
   </p>
   </div>
   <div class="modal-footer">
     <%= link_to "Non", "#", class: "btn btn-default", data: { dismiss: "modal" } %>
-    <%= link_to "Oui", work_order_path(@work_order), method: :delete, remote: true, class: "btn btn-danger" %>
+    <%= link_to "Oui", order_type_path(@order_type), method: :delete, remote: true, class: "btn btn-danger" %>
   </div>
   </div>
 </div>

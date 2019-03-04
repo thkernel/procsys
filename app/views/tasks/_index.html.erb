@@ -6,6 +6,7 @@
         <td><%= get_motif_name(task.motif_id) %></td>
         <td><%= task.time_limit.strftime("%d/%m/%Y") if task.time_limit %></td>
         <td><%= task.processing_date.strftime("%d/%m/%Y") if task.processing_date %></td>
+        <% if controller_name == "tasks" %>
        <td>
 					<div class="action-buttons">
 					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -14,5 +15,6 @@
 '), task_delete_path(task.id), remote: true, title: "Supprimer", class: "delete" %>
 </div>
 </td>
+<% end %>
       </tr>
     <% end %>

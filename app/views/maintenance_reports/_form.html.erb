@@ -1,4 +1,5 @@
-<%= form_with(model: maintenance_report, local: true) do |form| %>
+<%= form_with(model: maintenance_report, local: false) do |form| %>
+<div class="modal-body">
   <% if maintenance_report.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(maintenance_report.errors.count, "error") %> prohibited this maintenance_report from being saved:</h2>
@@ -11,32 +12,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :motif %>
-    <%= form.text_field :motif, id: :maintenance_report_motif %>
+    <%= form.text_field :motif, id: :maintenance_report_motif, class: "form-control", placeholder: "Motif" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :maintenance_report_description %>
+    <%= form.text_area :description, id: :maintenance_report_description, class: "form-control", placeholder: "Description" %>
   </div>
 
-  <div class="field">
-    <%= form.label :work_order_id %>
-    <%= form.text_field :work_order_id, id: :maintenance_report_work_order_id %>
+  
+
+  <div class="form-group">
+    <%= form.label "Réf bon de travail" %>
+    <%= form.collection_select(:work_order_id, @work_orders,  :id, :id , {prompt: "Sélectionner un bon de travail"}, class: "form-control", required: true) %>
+                
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :maintenance_report_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :maintenance_report_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
+   <div class="modal-footer">
+				<%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+				<%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+		</div>
 <% end %>

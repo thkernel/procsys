@@ -1,4 +1,5 @@
-<%= form_with(model: order_type, local: true) do |form| %>
+<%= form_with(model: order_type, local: false) do |form| %>
+<div class="modal-body">
   <% if order_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(order_type.errors.count, "error") %> prohibited this order_type from being saved:</h2>
@@ -11,24 +12,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :order_type_name %>
+  <div class="form-group">
+    <%= form.label "Nom" %>
+    <%= form.text_field :name, id: :order_type_name, class: "form-control", placeholder: "Nom", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :order_type_description %>
+  <div class="form-group">
+    <%= form.label "Description" %>
+    <%= form.text_area :description, id: :order_type_description, class: "form-control", placeholder: "Description" %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.check_box :status, id: :order_type_status %>
   </div>
 
-  
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <div class="modal-footer">
+				<%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+				<%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+		</div>
 <% end %>

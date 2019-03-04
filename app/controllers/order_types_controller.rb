@@ -1,5 +1,7 @@
 class OrderTypesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_order_type, only: [:show, :edit, :update, :destroy]
+  layout "dashboard"
 
   # GET /order_types
   # GET /order_types.json
@@ -28,11 +30,14 @@ class OrderTypesController < ApplicationController
 
     respond_to do |format|
       if @order_type.save
+        @order_types = OrderType.all
         format.html { redirect_to @order_type, notice: 'Order type was successfully created.' }
         format.json { render :show, status: :created, location: @order_type }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @order_type.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -42,19 +47,27 @@ class OrderTypesController < ApplicationController
   def update
     respond_to do |format|
       if @order_type.update(order_type_params)
+        @order_types = OrderType.all
         format.html { redirect_to @order_type, notice: 'Order type was successfully updated.' }
         format.json { render :show, status: :ok, location: @order_type }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @order_type.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+  end
+
+  def delete
+    @order_type = OrderType.find(params[:order_type_id])
   end
 
   # DELETE /order_types/1
   # DELETE /order_types/1.json
   def destroy
     @order_type.destroy
+    @order_types = OrderType.all
     respond_to do |format|
       format.html { redirect_to order_types_url, notice: 'Order type was successfully destroyed.' }
       format.json { head :no_content }
@@ -69,6 +82,6 @@ class OrderTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_type_params
-      params.require(:order_type).permit(:name, :description, :status)
+      params.require(:order_type).permit(:name, :description)
     end
 end

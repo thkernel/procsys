@@ -1,10 +1,10 @@
 $("ul.errors").html("");
-<% if @provider.errors.any? %>
-  <% @provider.errors.full_messages.each do |message| %>
+<% if @work_order.errors.any? %>
+  <% @work_order.errors.full_messages.each do |message| %>
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
   <% end %>
 <% else %>
-  $(".providers-index").html("<%= escape_javascript(render 'index') %>");
-  $("#provider-modal").modal("hide");
+  $(".work-orders-index").html("<%= escape_javascript(render 'index') %>");
+  $("#work-order-modal").modal("hide");
  
 <% end %>
