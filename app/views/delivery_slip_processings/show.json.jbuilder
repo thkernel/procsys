@@ -1,0 +1,1 @@
+json.partial! "delivery_slip_processings/delivery_slip_processing", delivery_slip_processing: @delivery_slip_processing

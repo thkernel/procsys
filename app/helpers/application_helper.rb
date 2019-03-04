@@ -56,6 +56,11 @@ module ApplicationHelper
 		order.ref
 	end
 
+	def get_work_order_ref(id)
+		work_order = WorkOrder.find(id)
+		work_order.id
+	end
+
 	def get_station_ref(id)
 		station = Station.find(id)
 		station.ref

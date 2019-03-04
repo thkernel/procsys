@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :delivery_slip_processings
+  resources :delivery_slips
   resources :maintenance_reports do   
     get 'delete'
   end

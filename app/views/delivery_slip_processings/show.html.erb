@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Delivery slip:</strong>
+  <%= @delivery_slip_processing.delivery_slip %>
+</p>
+
+<p>
+  <strong>Motif:</strong>
+  <%= @delivery_slip_processing.motif %>
+</p>
+
+<p>
+  <strong>Time limit:</strong>
+  <%= @delivery_slip_processing.time_limit %>
+</p>
+
+<p>
+  <strong>Processing date:</strong>
+  <%= @delivery_slip_processing.processing_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @delivery_slip_processing.user %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @delivery_slip_processing.status %>
+</p>
+
+<%= link_to 'Edit', edit_delivery_slip_processing_path(@delivery_slip_processing) %> |
+<%= link_to 'Back', delivery_slip_processings_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ref:</strong>
+  <%= @delivery_slip.ref %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @delivery_slip.order %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @delivery_slip.customer %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @delivery_slip.user %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @delivery_slip.status %>
+</p>
+
+<%= link_to 'Edit', edit_delivery_slip_path(@delivery_slip) %> |
+<%= link_to 'Back', delivery_slips_path %>

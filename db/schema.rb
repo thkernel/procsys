@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190304043323) do
+ActiveRecord::Schema.define(version: 20190304230239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,33 @@ ActiveRecord::Schema.define(version: 20190304043323) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "delivery_slip_processings", force: :cascade do |t|
+    t.bigint "delivery_slip_id"
+    t.bigint "motif_id"
+    t.datetime "time_limit"
+    t.datetime "processing_date"
+    t.bigint "user_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_slip_id"], name: "index_delivery_slip_processings_on_delivery_slip_id"
+    t.index ["motif_id"], name: "index_delivery_slip_processings_on_motif_id"
+    t.index ["user_id"], name: "index_delivery_slip_processings_on_user_id"
+  end
+
+  create_table "delivery_slips", force: :cascade do |t|
+    t.string "ref"
+    t.bigint "order_id"
+    t.bigint "customer_id"
+    t.bigint "user_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_delivery_slips_on_customer_id"
+    t.index ["order_id"], name: "index_delivery_slips_on_order_id"
+    t.index ["user_id"], name: "index_delivery_slips_on_user_id"
   end
 
   create_table "maintenance_reports", force: :cascade do |t|
@@ -240,6 +267,12 @@ ActiveRecord::Schema.define(version: 20190304043323) do
 
   add_foreign_key "companies", "users"
   add_foreign_key "customers", "users"
+  add_foreign_key "delivery_slip_processings", "delivery_slips"
+  add_foreign_key "delivery_slip_processings", "motifs"
+  add_foreign_key "delivery_slip_processings", "users"
+  add_foreign_key "delivery_slips", "customers"
+  add_foreign_key "delivery_slips", "orders"
+  add_foreign_key "delivery_slips", "users"
   add_foreign_key "maintenance_reports", "users"
   add_foreign_key "maintenance_reports", "work_orders"
   add_foreign_key "maintenance_requests", "stations"
