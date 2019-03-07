@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @delivery_slip.errors.any? %>
+  <% @delivery_slip.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".delivery-slips-index").html("<%= escape_javascript(render 'index') %>");
+  $("#delivery-slip-modal").modal("hide");
+ 
+<% end %>

@@ -1,4 +1,5 @@
-<%= form_with(model: delivery_slip_processing, local: true) do |form| %>
+<%= form_with(model: delivery_slip_processing, local: false) do |form| %>
+<div class="modal-body">
   <% if delivery_slip_processing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(delivery_slip_processing.errors.count, "error") %> prohibited this delivery_slip_processing from being saved:</h2>
@@ -11,37 +12,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :delivery_slip_id %>
-    <%= form.text_field :delivery_slip_id, id: :delivery_slip_processing_delivery_slip_id %>
+ 
+
+  <div class="form-group">
+    <%= form.label "Réf commande" %>
+    <%= form.collection_select(:delivery_slip_id, @delivery_slips,  :id, :ref , {prompt: "Sélectionner un bordereau"}, class: "form-control", required: true) %>
+                
   </div>
 
-  <div class="field">
-    <%= form.label :motif_id %>
-    <%= form.text_field :motif_id, id: :delivery_slip_processing_motif_id %>
+  <div class="form-group">
+    <%= form.label "Motif" %>
+    <%= form.collection_select(:motif_id, @motifs,  :id, :name , {prompt: "Sélectionner un motif"}, class: "form-control", required: true) %>
+                
   </div>
 
-  <div class="field">
-    <%= form.label :time_limit %>
-    <%= form.datetime_select :time_limit, id: :delivery_slip_processing_time_limit %>
+  <div class="form-group">
+    <%= form.label "Délai" %>
+    <%= form.date_field :time_limit, id: :delivery_slip_processing_time_limit, class: "form-control", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :processing_date %>
-    <%= form.datetime_select :processing_date, id: :delivery_slip_processing_processing_date %>
+  <div class="form-group">
+    <%= form.label "Date de traitement"%>
+    <%= form.date_field :processing_date, id: :delivery_slip_processing_processing_date, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :delivery_slip_processing_user_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :delivery_slip_processing_status %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <div class="modal-footer">
+				<%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+				<%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+		</div>
 <% end %>

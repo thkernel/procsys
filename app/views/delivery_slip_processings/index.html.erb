@@ -30,20 +30,8 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @delivery_slip_processings.each do |delivery_slip_processing| %>
-      <tr>
-      <td><%= delivery_slip_processing.created_at %></td>
-        <td><%= delivery_slip_processing.delivery_slip %></td>
-        <td><%= delivery_slip_processing.motif %></td>
-        <td><%= delivery_slip_processing.time_limit %></td>
-        <td><%= delivery_slip_processing.processing_date %></td>
-        
-        <td><%= link_to 'Show', delivery_slip_processing %></td>
-        <td><%= link_to 'Edit', edit_delivery_slip_processing_path(delivery_slip_processing) %></td>
-        <td><%= link_to 'Destroy', delivery_slip_processing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="delivery-slip-processings">
+    <%= render "index" %>
   </tbody>
 </table>
 
@@ -52,7 +40,7 @@
 </div>
 </div>
 </div>
-<div id="motif-modal" class="modal fade"></div>
+<div id="delivery-slip-processing-modal" class="modal fade"></div>
 <div id="user-disable-modal" class="modal fade"></div>
 <div id="user-enable-modal" class="modal fade"></div>
 

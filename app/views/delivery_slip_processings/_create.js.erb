@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @delivery_slip_processing.errors.any? %>
+  <% @delivery_slip_processing.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".delivery-slip-processings-index").html("<%= escape_javascript(render 'index') %>");
+  $("#delivery-slip-processing-modal").modal("hide");
+ 
+<% end %>

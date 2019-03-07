@@ -1,0 +1,18 @@
+<% @delivery_slip_processings.each do |delivery_slip_processing| %>
+      <tr>
+      <td><%= delivery_slip_processing.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= delivery_slip_processing.delivery_slip_id %></td>
+        <td><%= get_motif_name(delivery_slip_processing.motif_id) %></td>
+        <td><%= delivery_slip_processing.time_limit.strftime("%d/%m/%Y") %></td>
+        <td><%= delivery_slip_processing.processing_date %></td>
+        
+        <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_delivery_slip_processing_path(delivery_slip_processing), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'),delivery_slip_processing_delete_path(delivery_slip_processing.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+      </tr>
+    <% end %>

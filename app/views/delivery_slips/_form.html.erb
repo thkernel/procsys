@@ -1,4 +1,5 @@
-<%= form_with(model: delivery_slip, local: true) do |form| %>
+<%= form_with(model: delivery_slip, local: false) do |form| %>
+<div class="modal-body">
   <% if delivery_slip.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(delivery_slip.errors.count, "error") %> prohibited this delivery_slip from being saved:</h2>
@@ -11,32 +12,30 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :ref %>
-    <%= form.text_field :ref, id: :delivery_slip_ref %>
+    <%= form.text_field :ref, id: :delivery_slip_ref, class: "form-control", placeholder: "Réf" %>
   </div>
 
-  <div class="field">
-    <%= form.label :order_id %>
-    <%= form.text_field :order_id, id: :delivery_slip_order_id %>
+ 
+  <div class="form-group">
+    <%= form.label "Réf commande" %>
+    <%= form.collection_select(:order_id, @orders,  :id, :id , {prompt: "Sélectionner une commande"}, class: "form-control", required: true) %>
+                
   </div>
 
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.text_field :customer_id, id: :delivery_slip_customer_id %>
+  
+
+  <div class="form-group">
+    <%= form.label "Client" %>
+    <%= form.collection_select(:customer_id, @customers,  :id, :full_name , {prompt: "Sélectionner un client"}, class: "form-control", required: true) %>
+                
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :delivery_slip_user_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :delivery_slip_status %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+ <div class="modal-footer">
+				<%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+				<%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+		</div>
 <% end %>

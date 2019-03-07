@@ -29,19 +29,8 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @delivery_slips.each do |delivery_slip| %>
-      <tr>
-      <td><%= delivery_slip.created_at %></td>
-        <td><%= delivery_slip.ref %></td>
-        <td><%= delivery_slip.order %></td>
-        <td><%= delivery_slip.customer %></td>
-       
-        <td><%= link_to 'Show', delivery_slip %></td>
-        <td><%= link_to 'Edit', edit_delivery_slip_path(delivery_slip) %></td>
-        <td><%= link_to 'Destroy', delivery_slip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="delivery-slips-index">
+    <%= render "index" %>
   </tbody>
 </table>
 
@@ -50,7 +39,7 @@
 </div>
 </div>
 </div>
-<div id="motif-modal" class="modal fade"></div>
+<div id="delivery-slip-modal" class="modal fade"></div>
 <div id="user-disable-modal" class="modal fade"></div>
 <div id="user-enable-modal" class="modal fade"></div>
 

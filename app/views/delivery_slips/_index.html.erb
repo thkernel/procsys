@@ -1,0 +1,17 @@
+<% @delivery_slips.each do |delivery_slip| %>
+      <tr>
+      <td><%= delivery_slip.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= delivery_slip.ref %></td>
+        <td><%= delivery_slip.order_id %></td>
+        <td><%= get_customer_fullname(delivery_slip.customer_id) %></td>
+       
+        <td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_delivery_slip_path(delivery_slip), title: "Modifier", remote: true %>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'),delivery_slip_delete_path(delivery_slip.id), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+      </tr>
+    <% end %>
