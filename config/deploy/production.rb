@@ -11,7 +11,7 @@ set :application, "ProcSYS"               # the name of your website - should al
 set :deploy_to, "/home/ubuntu/apps/procsys.prod"   # the path to your new deployment directory on the server - by default, the name of the application (e.g. "/var/www/sites/example.com")
 set :rails_env, "production"
 
-server "54.67.59.134", user: "ubuntu", roles: %w{app db web}, ssh_options: {forward_agent: true}
+server "13.57.16.78", user: "ubuntu", roles: %w{app db web}, ssh_options: {forward_agent: true}
 
 
 # role-based syntax
@@ -69,5 +69,5 @@ set :pty, true
 set :ssh_options, {
   forward_agent: true,
   auth_methods: ["publickey"],
-  keys: ["~/projects/rails/procsys/gessys-ec2.pem"]
+  keys: ["~/projects/rails/procsys/procsys-ec2.pem"]
 }
